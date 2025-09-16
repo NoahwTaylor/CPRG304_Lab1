@@ -28,7 +28,7 @@ public class Vacuum extends Appliance {
 				break;
 		}
 		
-		return "Item Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\n Grade: " + grade + "\n Voltage: " + voltageDisplay;
+		return "Item Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nGrade: " + grade + "\nVoltage: " + voltageDisplay;
 	}
 	
 	// Getters
