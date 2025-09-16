@@ -1,6 +1,7 @@
 package appliances;
 
-public abstract class Appliance {
+public abstract class Appliance 
+{
 	
 	// Fields
 	protected String itemNumber;
