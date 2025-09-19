@@ -75,11 +75,16 @@ public class Methods
 			{
 				if (appliances.get(i).getItemNumber().equals(checkoutItem)) 
 				{
+					applianceFound = true;
 					if (appliances.get(i).available()) 
 					{
-						applianceFound = true;
+						
 						appliances.get(i).setQuantity((appliances.get(i).getQuantity()) - 1);
 						System.out.println("\nAppliance " + appliances.get(i).getItemNumber() + " has been checked out.");
+					}
+					else 
+					{
+						System.out.println("\nThe appliance is not available to be checked out.");
 					}
 					
 				}
@@ -88,7 +93,7 @@ public class Methods
 			
 			if (!applianceFound) 
 			{
-				System.out.println("\nThe appliance is not available to be checked out.");
+				System.out.println("\nNo appliances found with that item number.");
 			}		
 		}
 		
@@ -261,7 +266,8 @@ public class Methods
 		{			
 			System.out.println("\nEnter number of appliances:\n");
 			int randomCount = scanner.nextInt();
-			
+			scanner.nextLine();
+
 			List<Appliance> randomAppliances = new ArrayList<Appliance>();
 			int currentCount;
 			int randomNum;
