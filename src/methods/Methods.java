@@ -21,7 +21,7 @@ public class Methods
 		public static List<Appliance> createApplianceList()
 		{
 			List<Appliance> allAppliances = new ArrayList<Appliance>();
-			String filePath = "src\\appliances.txt";
+			String filePath = "src\\resources\\appliances.txt";
 			// Read a line of the txt file
 			try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
 			{
@@ -287,7 +287,7 @@ public class Methods
 		// Formats data from each object in master list and re-writes it to data file
 		public static void saveChanges(List<Appliance> appliances) 
 		{
-			String filePath = "src\\appliances.txt";
+			String filePath = "src\\resources\\appliances.txt";
 			try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));) 
 			{	
 				int i;
