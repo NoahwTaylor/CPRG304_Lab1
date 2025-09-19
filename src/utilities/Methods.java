@@ -1,10 +1,8 @@
 package methods;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -255,59 +253,7 @@ public class Methods
 					
 			}
 		}
-		
-		public static void randomApplianceList(List<Appliance> appliances) 
-		{
-			Scanner scanner = new Scanner(System.in);
-			
-			System.out.println("\nEnter number of appliances:\n");
-			int randomCount = scanner.nextInt();
-			
-			List<Appliance> randomAppliances = new ArrayList<Appliance>();
-			int currentCount;
-			int randomNum;
-			
-			for(currentCount = 0; currentCount < (randomCount);) 
-			{
-				randomNum = (int)(Math.random() * appliances.size());
-				if(!randomAppliances.contains(appliances.get(randomNum))) 
-				{
-					randomAppliances.add(appliances.get(randomNum));
-					currentCount++;
-				}
-			}
-			
-			System.out.println("\nRandom Appliances:");
-			int i;
-			for(i = 0; i < randomAppliances.size(); i++) 
-			{
-				System.out.println(randomAppliances.get(i).toString());
-			}
-			
-			
-			
-		}
 	
-		public static void saveChanges(List<Appliance> appliances) 
-		{
-			String filePath = "src\\appliances.txt";
-			try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));) 
-			{	
-				int i;
-				for(i = 0; i < appliances.size(); i++) 
-				{
-					writer.write(appliances.get(i).toFile());
-					writer.newLine();
-				}
-				System.out.println("\nAll Changes Saved!");
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		
 		public static void displayMenu() 
 		{
 			List<Appliance> appliance = createApplianceList();
@@ -332,10 +278,7 @@ public class Methods
 					searchByType(appliance);
 					break;
 				case 4:
-					randomApplianceList(appliance);
-					break;
 				case 5:
-					saveChanges(appliance);
 				default:
 					isRunning = false;
 				}

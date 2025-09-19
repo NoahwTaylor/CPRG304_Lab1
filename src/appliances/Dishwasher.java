@@ -31,9 +31,19 @@ public class Dishwasher extends Appliance {
 				soundRatingDisplay = "Moderate";
 		}
 		
-		return "Item Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nFeature: " + feature + "\nSound Rating: " + soundRatingDisplay;
+		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nFeature: " + feature + "\nSound Rating: " + soundRatingDisplay;
 
 	
+	}
+	
+	public String getFeature() 
+	{
+		return this.feature;
+	}
+	
+	public String getSoundRating() 
+	{
+		return this.soundRating;
 	}
 
 }

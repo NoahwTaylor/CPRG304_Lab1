@@ -33,7 +33,7 @@ public class Refrigerator extends Appliance {
 				break;		
 		}
 		
-		return "Item Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nNumber of Doors: " + doorsDisplay + "\nHeight: " + height +" In\nWidth: " + width + " In";
+		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nNumber of Doors: " + doorsDisplay + "\nHeight: " + height +" In\nWidth: " + width + " In";
 	}
 	
 	// Getters

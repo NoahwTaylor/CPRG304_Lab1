@@ -16,7 +16,7 @@ public class Microwave extends Appliance
 	@Override
 	public String toString() 
 	{ 
-		return "Item Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nCapacity: " + capacity + " cu ft" + "\nRoom Type: " + roomType;
+		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nCapacity: " + capacity + " cu ft" + "\nRoom Type: " + roomType;
  
 	}
 
