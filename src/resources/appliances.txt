@@ -22,4 +22,4 @@
 328237584;Miele;90;1200;bronze;250.23;2.1;W
 118963476;Russell Hobbs;146;1150;grey;2360.0;4;73;32
 333607621;Vax;113;440;silver;123.99;1.6;W
-274807482;Black & Decker;39;1800;black;375.0;Commercial;24
+274807482;Black & Decker;30;1800;black;375.0;Commercial;24
