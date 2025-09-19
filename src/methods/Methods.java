@@ -2,7 +2,6 @@ package methods;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +17,7 @@ public class Methods
 	
 	public static class ProgramMethods
 	{
+		// Parses through data file to create a list of appliance objects containing all objects in the appliances.txt file
 		public static List<Appliance> createApplianceList()
 		{
 			List<Appliance> allAppliances = new ArrayList<Appliance>();
@@ -31,6 +31,7 @@ public class Methods
 				{
 					String[] applianceInfo = line.split(";");
 					
+					// Switches first number of itemNumber to create and append corresponding child appliance object
 					switch(applianceInfo[0].charAt(0)) 
 					{
 						case '1':
@@ -61,10 +62,9 @@ public class Methods
 			return allAppliances;
 		};
 		
-		public static void checkoutAppliance(List<Appliance> appliances) 
+		// Allows user to checkout out an appliance if available, decrementing the capacity by 1
+		public static void checkoutAppliance(List<Appliance> appliances, Scanner scanner) 
 		{
-			Scanner scanner = new Scanner(System.in);
-			
 			System.out.println("\nEnter the item number of an appliance:");
 			String checkoutItem = scanner.nextLine();
 			
@@ -75,9 +75,13 @@ public class Methods
 			{
 				if (appliances.get(i).getItemNumber().equals(checkoutItem)) 
 				{
-					applianceFound = true;
-					appliances.get(i).setQuantity((appliances.get(i).getQuantity()) - 1);
-					System.out.println("\nAppliance " + appliances.get(i).getItemNumber() + " has been checked out.");
+					if (appliances.get(i).available()) 
+					{
+						applianceFound = true;
+						appliances.get(i).setQuantity((appliances.get(i).getQuantity()) - 1);
+						System.out.println("\nAppliance " + appliances.get(i).getItemNumber() + " has been checked out.");
+					}
+					
 				}
 				
 			}
@@ -85,14 +89,13 @@ public class Methods
 			if (!applianceFound) 
 			{
 				System.out.println("\nThe appliance is not available to be checked out.");
-				System.out.println(checkoutItem);
-			}
+			}		
 		}
 		
-		public static void searchByBrand(List<Appliance> appliances)
+		// Allows user to search through appliance list by brand name
+		public static void searchByBrand(List<Appliance> appliances, Scanner scanner)
 		{
-			Scanner scanner = new Scanner(System.in);
-			
+
 			System.out.println("\nEnter brand to search for:\n");
 			String brandSearch = scanner.nextLine();
 			
@@ -106,13 +109,12 @@ public class Methods
 					System.out.println(appliances.get(i).toString());
 				}
 			}
-				
+	
 		}
 	
-		public static void searchByType(List<Appliance> appliances) 
+		// Allows user to search through appliance list by each specific appliance type
+		public static void searchByType(List<Appliance> appliances, Scanner scanner) 
 		{	
-			Scanner scanner = new Scanner(System.in);
-			
 			System.out.println("\nAppliance Types: \n1 - Refrigerators \n2 - Vacuums \n3 - Microwaves \n4 - Dishwashers \nEnter type of appliance:\n");
 			String applianceTypeSearch = scanner.nextLine();
 						
@@ -152,7 +154,7 @@ public class Methods
 						}
 						
 					}
-							
+					break;
 				case "2":
 					validInput = false;	
 					String voltage = "";
@@ -250,16 +252,13 @@ public class Methods
 					}
 					break;
 				default:
-					System.out.println("\nNo Appliances Found:");
-					
-					
+					System.out.println("\nNo Appliances Found:");			
 			}
 		}
 		
-		public static void randomApplianceList(List<Appliance> appliances) 
-		{
-			Scanner scanner = new Scanner(System.in);
-			
+		// Generates a user defined number of appliances from the master list and displays their toString method
+		public static void randomApplianceList(List<Appliance> appliances, Scanner scanner) 
+		{			
 			System.out.println("\nEnter number of appliances:\n");
 			int randomCount = scanner.nextInt();
 			
@@ -282,12 +281,10 @@ public class Methods
 			for(i = 0; i < randomAppliances.size(); i++) 
 			{
 				System.out.println(randomAppliances.get(i).toString());
-			}
-			
-			
-			
+			}			
 		}
 	
+		// Formats data from each object in master list and re-writes it to data file
 		public static void saveChanges(List<Appliance> appliances) 
 		{
 			String filePath = "src\\appliances.txt";
@@ -302,12 +299,11 @@ public class Methods
 				System.out.println("\nAll Changes Saved!");
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		
+		// Allows user to navigate through programs functionalities, will not close until program is terminated
 		public static void displayMenu() 
 		{
 			List<Appliance> appliance = createApplianceList();
@@ -317,27 +313,28 @@ public class Methods
 			while(isRunning) 
 			{
 				System.out.println("\nWelcome to Modern Appliances! \nHow May We Assist You? \n1 - Check out appliance \n2 - Find appliances by brand \n3 - Display appliances by type \n4 - Produce random appliance list \n5 - Save & exit");
-				int userChoice = scanner.nextInt();
-				
-				
+				String userChoice = scanner.nextLine();
+					
 				switch(userChoice) 
 				{
-				case 1:
-					checkoutAppliance(appliance);
+				case "1":
+					checkoutAppliance(appliance, scanner);
 					break;
-				case 2:
-					searchByBrand(appliance);
+				case "2":
+					searchByBrand(appliance, scanner);
 					break;
-				case 3:
-					searchByType(appliance);
+				case "3":
+					searchByType(appliance, scanner);
 					break;
-				case 4:
-					randomApplianceList(appliance);
+				case "4":
+					randomApplianceList(appliance, scanner);
 					break;
-				case 5:
+				case "5":
 					saveChanges(appliance);
-				default:
 					isRunning = false;
+					break;
+				default:
+					System.out.println("Invalid Input");
 				}
 			}
 			scanner.close();

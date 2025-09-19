@@ -11,7 +11,7 @@ public abstract class Appliance
 	protected String colour;
 	protected float price;
 	
-	// Constructors
+	// Constructor
 	public Appliance(String itemNumber, String brand, int quantity, int wattage, String colour, float price) 
 	{
 		this.itemNumber = itemNumber;
@@ -21,10 +21,30 @@ public abstract class Appliance
 		this.colour = colour;
 		this.price = price;
 	}
-		// TODO Auto-generated constructor stub
 
 	@Override
 	public abstract String toString();
+	
+	// Method to format string to be re-written to file in each subclass
+	public abstract String toFile();
+	
+	public boolean available() 
+	{
+		if (quantity >= 1) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
+	// Base for each subclasses toFile method
+	public String toFileBase() 
+	{
+		return itemNumber + ";" + brand + ";" + quantity + ";" + wattage + ";" + colour + ";" + price + ";";
+	}
 	
 	// Getters
 	public String getItemNumber() 

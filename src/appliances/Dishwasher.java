@@ -2,9 +2,12 @@ package appliances;
 
 public class Dishwasher extends Appliance {
 	
+	
+	// Additional fields for subclass
 	protected String feature;
 	protected String soundRating;
 
+	// Constructor declares additional variables for the subclass
 	public Dishwasher(String itemNumber, String brand, int quantity, int wattage, String colour, float price, String feature, String soundRating) {
 		super(itemNumber, brand, quantity, wattage, colour, price);
 
@@ -32,10 +35,16 @@ public class Dishwasher extends Appliance {
 		}
 		
 		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nFeature: " + feature + "\nSound Rating: " + soundRatingDisplay;
-
-	
 	}
 	
+	
+	// Format string to be re-written to file
+	public String toFile() 
+	{
+		return toFileBase() + feature + ";" + soundRating;
+	}
+	
+	// Getters
 	public String getFeature() 
 	{
 		return this.feature;

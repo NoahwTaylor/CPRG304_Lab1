@@ -2,9 +2,11 @@ package appliances;
 
 public class Vacuum extends Appliance {
 	
+	// Additional fields for subclass
 	protected String grade;
 	protected int voltage;
 
+	// Constructor declares addition variables for subclass
 	public Vacuum(String itemNumber, String brand, int quantity, int wattage, String colour, float price, String grade, int voltage) 
 	{
 		super(itemNumber, brand, quantity, wattage, colour, price);
@@ -16,6 +18,8 @@ public class Vacuum extends Appliance {
 	@Override
 	public String toString() 
 	{
+		
+		// Creates proper display message based on voltage value
 		String voltageDisplay = "";
 		
 		switch(voltage) 
@@ -31,8 +35,13 @@ public class Vacuum extends Appliance {
 		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nGrade: " + grade + "\nVoltage: " + voltageDisplay;
 	}
 	
-	// Getters
+	// Formats string to be re-written to file
+	public String toFile() 
+	{
+		return toFileBase() + grade + ";" + voltage;
+	}
 	
+	// Getters
 	public String getGrade() 
 	{	
 		return this.grade;

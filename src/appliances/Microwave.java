@@ -2,9 +2,11 @@ package appliances;
 
 public class Microwave extends Appliance 
 {
+	// Additional fields for subclass
 	protected float capacity;
 	protected String roomType;
 
+	// Constructor declares additional variables for subclass
 	public Microwave(String itemNumber, String brand, int quantity, int wattage, String colour, float price, float capacity, String roomType) 
 	{
 		super(itemNumber, brand, quantity, wattage, colour, price);
@@ -17,7 +19,13 @@ public class Microwave extends Appliance
 	public String toString() 
 	{ 
 		return "\nItem Number: " + itemNumber + "\nBrand: " + brand + "\nQuantity: " + quantity + "\nWattage: " + wattage + "\nColour: " + colour + "\nPrice: " + price + "\nCapacity: " + capacity + " cu ft" + "\nRoom Type: " + roomType;
- 
+	}
+	
+	
+	// Format string to be re-written to file
+	public String toFile() 
+	{
+		return toFileBase() + capacity + ";" + roomType;
 	}
 
 	// Getters
