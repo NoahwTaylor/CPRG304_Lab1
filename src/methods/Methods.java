@@ -11,6 +11,12 @@ import java.util.Scanner;
 
 import appliances.*;
 
+/*
+ * Author: Noah Taylor
+ * Date: Sept, 2025
+ * Class: Methods.java
+ * Description: This class contains all methods used to make the program function.
+ */
 
 public class Methods 
 {

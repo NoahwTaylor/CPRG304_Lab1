@@ -1,4 +1,10 @@
 package appliances;
+/*
+ * Author: Noah Taylor
+ * Date: Sept, 2025
+ * Class: Appliance.java
+ * Description: This class is the superclass to all type of appliance sub-classes.
+ */
 
 public abstract class Appliance 
 {
